@@ -1,0 +1,198 @@
+/* ============================
+   SKYRIFT — KEYFRAME ANIMATIONS
+   ============================ */
+
+/* Floating / Bobbing */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes float-fast {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Balloon specific */
+@keyframes balloon-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(1deg); }
+  75% { transform: translateY(-5px) rotate(-1deg); }
+}
+
+@keyframes flame-flicker {
+  0%, 100% { transform: scale(1) translateY(0); opacity: 0.9; }
+  25% { transform: scale(1.1, 0.9) translateY(1px); opacity: 1; }
+  50% { transform: scale(0.9, 1.1) translateY(-1px); opacity: 0.85; }
+  75% { transform: scale(1.05, 0.95) translateY(0.5px); opacity: 0.95; }
+}
+
+@keyframes flame-color {
+  0%, 100% { fill: #FF5C1A; }
+  33% { fill: #FFB347; }
+  66% { fill: #FF8C00; }
+}
+
+/* Propeller spin */
+@keyframes spin-fast {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Zeppelin drift */
+@keyframes zeppelin-drift {
+  0%, 100% { transform: translateX(0px); }
+  50% { transform: translateX(8px); }
+}
+
+/* Jet exhaust flame morph */
+@keyframes exhaust-flame {
+  0% { d: path('M0,0 L-8,12 L0,8 L8,12 Z'); }
+  33% { d: path('M0,0 L-6,15 L0,10 L6,15 Z'); }
+  66% { d: path('M0,0 L-10,10 L0,7 L10,10 Z'); }
+  100% { d: path('M0,0 L-8,12 L0,8 L8,12 Z'); }
+}
+
+@keyframes jet-float {
+  0%, 100% { transform: translateY(0px) rotate(-5deg); }
+  50% { transform: translateY(-8px) rotate(-3deg); }
+}
+
+/* Wing flex / breathe */
+@keyframes wing-breathe {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.97); }
+}
+
+@keyframes canopy-breathe {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(1.03); }
+}
+
+/* Ornithopter wings flap */
+@keyframes wing-flap-left {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-25deg); }
+}
+
+@keyframes wing-flap-right {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(25deg); }
+}
+
+/* Solar panel pulse */
+@keyframes solar-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Gyro rotor spin */
+@keyframes rotor-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Star field drift */
+@keyframes stars-drift {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-200px); }
+}
+
+@keyframes twinkling {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Scroll indicator line grow */
+@keyframes scroll-line-grow {
+  0% { height: 0px; opacity: 0; }
+  50% { height: 40px; opacity: 1; }
+  100% { height: 0px; opacity: 0; transform: translateY(40px); }
+}
+
+/* Orbit pulse */
+@keyframes orbit-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px var(--sky-electric), 0 0 15px rgba(0,240,255,0.3); }
+  50% { box-shadow: 0 0 0 4px var(--sky-electric), 0 0 25px rgba(0,240,255,0.6); }
+}
+
+/* Balloon drift in footer */
+@keyframes balloon-drift-left {
+  from { transform: translateX(100px); }
+  to { transform: translateX(calc(-100vw - 200px)); }
+}
+
+/* Connector line pulse */
+@keyframes line-pulse {
+  0%, 100% { stroke-opacity: 0.3; }
+  50% { stroke-opacity: 0.8; }
+}
+
+/* Counter value animation */
+@keyframes count-glow {
+  0% { text-shadow: none; }
+  50% { text-shadow: 0 0 20px var(--sky-horizon); }
+  100% { text-shadow: none; }
+}
+
+/* Marquee scroll */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Button morph on submit */
+@keyframes plane-takeoff {
+  0% { transform: translateX(-100%) translateY(0); }
+  70% { transform: translateX(200%) translateY(-15px); }
+  100% { transform: translateX(200%) translateY(-15px); opacity: 0; }
+}
+
+/* Path draw */
+@keyframes path-draw {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Glow pulse */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 15px var(--sky-horizon); }
+  50% { box-shadow: 0 0 40px var(--sky-horizon), 0 0 70px rgba(255,92,26,0.3); }
+}
+
+/* Wingsuit ripple */
+@keyframes fabric-ripple {
+  0%, 100% { d: path('M20,100 Q80,90 160,100 Q240,110 280,100'); }
+  50% { d: path('M20,100 Q80,110 160,100 Q240,90 280,100'); }
+}
+
+/* Drag drop border animation */
+@keyframes border-dash {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -100; }
+}
+
+/* Navbar shrink animation */
+@keyframes nav-shrink {
+  from { height: var(--nav-height, 80px); }
+  to { height: calc(var(--nav-height, 80px) * 0.6); }
+}
+
+/* prefers-reduced-motion: disable all */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

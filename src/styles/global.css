@@ -1,0 +1,318 @@
+/* ============================
+   SKYRIFT — GLOBAL STYLES
+   ============================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--sky-void);
+  color: var(--sky-cloud);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body, a, button, [role="button"], .clickable, input, select, textarea {
+    cursor: none !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--sky-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sky-horizon);
+  border-radius: 2px;
+}
+
+/* Scroll Progress Bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sky-horizon), var(--sky-flare), var(--sky-electric));
+  z-index: var(--z-cursor);
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px var(--sky-horizon);
+}
+
+/* Custom Cursor */
+#cursor-dot {
+  position: fixed;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transition: transform 0.1s ease;
+  mix-blend-mode: difference;
+}
+
+#cursor-ring {
+  position: fixed;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-style: normal;
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: var(--sky-cloud);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--sky-mist);
+  font-style: normal;
+}
+
+p {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--sky-cloud);
+}
+
+/* Wing-profile CTA button */
+.btn-wing {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2.5rem 0.85rem 2rem;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sky-cloud);
+  background: var(--sky-glass);
+  border: 1px solid var(--sky-glass-border);
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  cursor: none;
+  text-decoration: none;
+  transition: all 0.3s var(--ease-smooth);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btn-wing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.btn-wing:hover::before {
+  opacity: 1;
+}
+
+.btn-wing:hover {
+  color: var(--sky-void);
+  border-color: transparent;
+  box-shadow: 0 0 30px rgba(255, 92, 26, 0.4);
+}
+
+.btn-wing > * {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-wing-primary {
+  background: var(--gradient-primary);
+  color: var(--sky-void);
+  border-color: transparent;
+}
+
+.btn-wing-primary::before {
+  background: linear-gradient(135deg, var(--sky-flare), var(--sky-electric));
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sky-cloud);
+  background: transparent;
+  border: 1px solid var(--sky-glass-border);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  cursor: none;
+  text-decoration: none;
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.btn-ghost:hover {
+  border-color: var(--sky-electric);
+  color: var(--sky-electric);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+}
+
+/* Section wrapper */
+.section {
+  position: relative;
+  padding: 7rem 0;
+  overflow: hidden;
+}
+
+/* Section divider gradient line */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sky-glass-border) 20%, var(--sky-glass-border) 80%, transparent);
+  pointer-events: none;
+}
+
+/* No divider on first section after hero */
+.stats-bar::before {
+  display: none;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+/* ===========================
+   SECTION HEADER — Global
+   =========================== */
+.section-header {
+  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.section-header::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--sky-horizon), transparent);
+  border-radius: 2px;
+}
+
+.section-header .label {
+  display: block;
+  color: var(--sky-horizon);
+  letter-spacing: 0.18em;
+}
+
+.section-title {
+  font-size: clamp(56px, 7.5vw, 115px);
+  line-height: 0.9;
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    margin-bottom: 3rem;
+    padding-left: 1rem;
+  }
+}
+
+/* Availability dots */
+.dot-available {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sky-altitude);
+  box-shadow: 0 0 10px var(--sky-altitude);
+  animation: pulse-available 1.5s ease-in-out infinite;
+}
+
+.dot-booked {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff4444;
+  opacity: 0.6;
+}
+
+@keyframes pulse-available {
+  0%, 100% { box-shadow: 0 0 5px var(--sky-altitude); transform: scale(1); }
+  50% { box-shadow: 0 0 15px var(--sky-altitude), 0 0 25px rgba(200,255,0,0.3); transform: scale(1.3); }
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: var(--sky-glass);
+  border: 1px solid var(--sky-glass-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Noise texture overlay */
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* Section reveal animation */
+.section-reveal {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+
+.section-reveal.revealed {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 0.8s var(--ease-sharp);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 0;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+}

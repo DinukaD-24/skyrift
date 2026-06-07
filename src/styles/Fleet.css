@@ -1,0 +1,277 @@
+/* SKYRIFT — Fleet Styles */
+.fleet {
+  background: var(--sky-void);
+  padding: 8rem 0;
+  min-height: 100vh;
+}
+
+
+/* Orbital layout */
+.fleet__orbital {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 960px;
+  /* Ensure nodes are always reachable */
+  isolation: isolate;
+}
+
+.fleet__orbit-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  /* Nodes must sit ABOVE the center card */
+  z-index: 3;
+}
+
+.fleet__orbit-ring {
+  position: absolute;
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.fleet__node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: none;
+  pointer-events: all;
+  transition: transform 0.2s ease;
+}
+
+.fleet__node-inner {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--sky-glass);
+  border: 1px solid var(--sky-glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--ease-smooth);
+  overflow: hidden;
+}
+
+.fleet__node:hover .fleet__node-inner,
+.fleet__node.is-selected .fleet__node-inner {
+  background: rgba(0,240,255,0.08);
+  border-color: var(--sky-electric);
+  box-shadow: 0 0 20px rgba(0,240,255,0.3), 0 0 0 3px rgba(0,240,255,0.1);
+}
+
+.fleet__node.is-selected .fleet__node-inner {
+  animation: orbit-pulse 2s ease-in-out infinite;
+}
+
+.fleet__node-label {
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  max-width: 70px;
+  text-align: center;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.fleet__node:hover .fleet__node-label,
+.fleet__node.is-selected .fleet__node-label {
+  opacity: 1;
+  color: var(--sky-electric);
+}
+
+.fleet__connector {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+.fleet__node:hover .fleet__connector,
+.fleet__node.is-selected .fleet__connector {
+  opacity: 0.85;
+}
+
+/* Center display panel */
+.fleet__center-display {
+  position: relative;
+  z-index: 2;
+  background: var(--sky-glass);
+  border: 1px solid var(--sky-glass-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  /* Narrowed so side orbital nodes are never covered */
+  max-width: 320px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+  /* No pointer-events passthrough to nodes behind */
+  pointer-events: all;
+}
+
+.fleet__craft-svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  filter: drop-shadow(0 0 30px rgba(255,92,26,0.2));
+}
+
+.fleet__craft-info {
+  width: 100%;
+}
+
+.fleet__craft-name {
+  font-size: clamp(24px, 3.5vw, 32px);
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+
+.fleet__craft-tagline {
+  font-size: 13px;
+  color: var(--sky-mist);
+  margin-bottom: 1rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.fleet__spec-strip {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--sky-glass-border);
+}
+
+.fleet__spec {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.fleet__spec-val {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-style: normal;
+  color: var(--sky-cloud);
+  font-weight: 500;
+}
+
+.fleet__price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.fleet__price {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--sky-horizon);
+  line-height: 1;
+}
+
+.fleet__price span {
+  font-size: 14px;
+  color: var(--sky-mist);
+}
+
+.fleet__availability {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fleet__actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.fleet__actions .btn-wing,
+.fleet__actions .btn-ghost {
+  flex: 1;
+  justify-content: center;
+  font-size: 11px;
+}
+
+/* Mobile strip */
+.fleet__mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.fleet__mobile-strip {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.fleet__mobile-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.fleet__mobile-card {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--sky-glass);
+  border: 1px solid var(--sky-glass-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  cursor: none;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.fleet__mobile-card.is-selected {
+  border-color: var(--sky-electric);
+  background: rgba(0,240,255,0.05);
+  box-shadow: 0 0 20px rgba(0,240,255,0.15);
+}
+
+.fleet__mobile-card .label {
+  font-size: 8px;
+  text-align: center;
+}
+
+.fleet__center-display--mobile {
+  max-width: 100%;
+  position: static;
+}
+
+@media (max-width: 1200px) {
+  .fleet__orbital {
+    min-height: 800px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .fleet__orbital {
+    min-height: 700px;
+  }
+}

@@ -1,0 +1,99 @@
+/* SKYRIFT — Stats Bar Styles */
+.stats-bar {
+  background: var(--sky-deep);
+  border-top: 1px solid var(--sky-glass-border);
+  border-bottom: 1px solid var(--sky-glass-border);
+  padding: 3.5rem 2.5rem;
+  position: relative;
+  /* Remove overflow:hidden — causes number clipping */
+}
+
+/* Ambient glow sweep */
+.stats-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 92, 26, 0.04) 40%,
+    rgba(0, 240, 255, 0.03) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.stats-bar__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.5rem 1rem;
+  position: relative;
+  transition: transform 0.3s var(--ease-smooth);
+}
+
+.stat:hover {
+  transform: translateY(-3px);
+}
+
+/* Vertical dividers between stats */
+.stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--sky-glass-border) 30%, var(--sky-glass-border) 70%, transparent);
+}
+
+.stat__value {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 6vw, 88px);
+  /* Extra vertical padding prevents descender/ascender clipping */
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  color: var(--sky-cloud);
+  display: block;
+  /* Glow effect without background-clip (which clips digits) */
+  text-shadow:
+    0 0 40px rgba(255, 92, 26, 0.3),
+    0 0 80px rgba(255, 92, 26, 0.1);
+}
+
+.stat__label {
+  font-size: 10px;
+  color: var(--sky-mist);
+  letter-spacing: 0.15em;
+}
+
+@media (max-width: 768px) {
+  .stats-bar {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .stats-bar__inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 0;
+  }
+
+  .stat:nth-child(2)::after,
+  .stat:nth-child(4)::after {
+    display: none;
+  }
+
+  .stat:nth-child(1)::after,
+  .stat:nth-child(3)::after {
+    display: block;
+  }
+}

@@ -1,0 +1,447 @@
+/* SKYRIFT — Booking Form Styles */
+.booking {
+  background: var(--sky-deep);
+  padding: 8rem 0;
+}
+
+.cockpit {
+  position: relative;
+  margin-top: 4rem;
+  background: var(--sky-midnight);
+  border: 1px solid var(--sky-glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.cockpit__accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--sky-horizon), var(--sky-flare), var(--sky-electric), transparent);
+}
+
+.cockpit__accent-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sky-glass-border), transparent);
+}
+
+.cockpit__form {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  min-height: 700px;
+}
+
+.cockpit__left {
+  padding: 3rem 2.5rem;
+  border-right: 1px solid var(--sky-glass-border);
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cockpit__right {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.cockpit__section-label {
+  color: var(--sky-horizon);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* Craft chips */
+.craft-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--sky-horizon) transparent;
+  padding-right: 0.5rem;
+}
+
+.craft-chips::-webkit-scrollbar {
+  width: 4px;
+}
+
+.craft-chips::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.craft-chips::-webkit-scrollbar-thumb {
+  background: var(--sky-horizon);
+  border-radius: 2px;
+}
+
+.craft-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--sky-glass);
+  border: 1px solid var(--sky-glass-border);
+  border-radius: var(--radius-sm);
+  cursor: none;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.craft-chip:hover {
+  border-color: rgba(255,92,26,0.3);
+  background: rgba(255,92,26,0.05);
+}
+
+.craft-chip.is-selected {
+  border-color: var(--sky-horizon);
+  background: rgba(255,92,26,0.1);
+  box-shadow: 0 0 15px rgba(255,92,26,0.15);
+}
+
+.craft-chip__svg {
+  width: 32px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.craft-chip__label {
+  flex: 1;
+  font-size: 9px;
+  color: var(--sky-cloud);
+}
+
+/* Selected craft info preview */
+.selected-craft-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255,92,26,0.05);
+  border: 1px solid rgba(255,92,26,0.15);
+  border-radius: var(--radius-md);
+  margin-top: auto;
+}
+
+.selected-craft-info__name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  margin-bottom: 0.2rem;
+}
+
+.selected-craft-info__tagline {
+  font-size: 12px;
+  color: var(--sky-mist);
+  margin: 0;
+}
+
+/* Form elements */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.form-label {
+  color: var(--sky-mist);
+  font-size: 10px;
+  display: block;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--sky-glass);
+  border: 1px solid var(--sky-glass-border);
+  border-radius: var(--radius-sm);
+  color: var(--sky-cloud);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-style: normal;
+  outline: none;
+  transition: border-color 0.3s ease;
+  color-scheme: dark;
+}
+
+.form-input:focus {
+  border-color: var(--sky-electric);
+  box-shadow: 0 0 0 2px rgba(0,240,255,0.1);
+}
+
+/* Duration toggles */
+.toggle-group {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--sky-glass-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.toggle-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--sky-glass-border);
+  color: var(--sky-mist);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-style: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: none;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:last-child {
+  border-right: none;
+}
+
+.toggle-btn:hover {
+  background: var(--sky-glass);
+  color: var(--sky-cloud);
+}
+
+.toggle-btn.is-active {
+  background: rgba(255,92,26,0.15);
+  color: var(--sky-horizon);
+  border-right-color: rgba(255,92,26,0.2);
+}
+
+.toggle-btn__wing {
+  opacity: 0.5;
+}
+
+.toggle-btn.is-active .toggle-btn__wing {
+  opacity: 1;
+}
+
+/* Experience selector */
+.experience-selector {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.exp-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--sky-glass);
+  border: 1px solid var(--sky-glass-border);
+  border-radius: var(--radius-sm);
+  cursor: none;
+  transition: all 0.2s ease;
+}
+
+.exp-option.is-selected {
+  border-color: var(--sky-electric);
+  background: rgba(0,240,255,0.05);
+}
+
+.exp-option .label {
+  font-size: 8px;
+}
+
+.exp-meter {
+  display: flex;
+  gap: 2px;
+}
+
+.exp-bar {
+  width: 6px;
+  height: 12px;
+  background: var(--sky-glass-border);
+  border-radius: 1px;
+  transition: background 0.2s ease;
+}
+
+.exp-bar.filled {
+  background: var(--sky-electric);
+}
+
+.exp-option.is-selected .exp-bar.filled {
+  box-shadow: 0 0 6px var(--sky-electric);
+}
+
+/* Upload zone */
+.upload-zone {
+  border: 1px dashed var(--sky-glass-border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: none;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.upload-zone:hover,
+.upload-zone.is-drag-over {
+  border-color: var(--sky-horizon);
+  background: rgba(255,92,26,0.04);
+}
+
+.upload-zone__plane {
+  animation: float-gentle 3s ease-in-out infinite;
+}
+
+.upload-zone__text {
+  font-size: 13px;
+  color: var(--sky-mist);
+  margin: 0;
+  font-style: normal;
+}
+
+.upload-zone__text span {
+  color: var(--sky-horizon);
+  text-decoration: underline;
+}
+
+.upload-zone__hint {
+  font-size: 9px;
+}
+
+/* Price summary */
+.price-summary {
+  background: var(--sky-glass);
+  border: 1px solid var(--sky-glass-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.price-summary__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-summary__total {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--sky-glass-border);
+  margin-top: 0.25rem;
+}
+
+.price-summary__total .label {
+  color: var(--sky-cloud);
+}
+
+.price-summary__amount {
+  font-family: var(--font-display);
+  font-size: 36px;
+  color: var(--sky-horizon);
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(255,92,26,0.3);
+}
+
+/* Submit button */
+.submit-btn {
+  width: 100%;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sky-void);
+  background: var(--gradient-primary);
+  border: none;
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  cursor: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn:hover:not(:disabled) {
+  box-shadow: 0 0 40px rgba(255,92,26,0.4);
+  transform: translateY(-1px);
+}
+
+.submit-btn.loading {
+  background: linear-gradient(135deg, var(--sky-storm), var(--sky-electric));
+  cursor: not-allowed;
+}
+
+.submit-btn.success {
+  background: linear-gradient(135deg, rgba(200,255,0,0.8), rgba(200,255,0,0.6));
+  color: var(--sky-void);
+}
+
+.submit-btn__loading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.submit-btn__plane {
+  animation: plane-takeoff 2s ease-in-out infinite;
+}
+
+.submit-btn__success {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 1024px) {
+  .cockpit__form {
+    grid-template-columns: 1fr;
+  }
+
+  .cockpit__left {
+    border-right: none;
+    border-bottom: 1px solid var(--sky-glass-border);
+  }
+
+  .craft-chips {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-height: 240px;
+  }
+
+  .selected-craft-info {
+    margin-top: 0;
+  }
+}
